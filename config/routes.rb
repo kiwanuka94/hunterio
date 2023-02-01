@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
+  get 'home/index'
   root 'pages#home'
 
   devise_for :users
   get 'logout', to: 'pages#logout', as: 'logout'
+  get 'api/search_domain', to: 'api#search_domain'
+  post 'home/create', to: 'home#create', as: 'home_create'
+  post 'update_emails', to: 'home#update_emails'
 
   resources :subscribe, only: [:index]
   resources :dashboard, only: [:index]
