@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_01_173558) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_02_200340) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,6 +21,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_01_173558) do
     t.datetime "updated_at", null: false
     t.string "email1"
     t.string "email2"
+    t.string "instagram"
+    t.string "state"
   end
 
   create_table "delayed_jobs", force: :cascade do |t|
