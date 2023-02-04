@@ -2,6 +2,7 @@ class PagesController < ApplicationController
   before_action :authenticate_user!, only: [:logout]
 
   def home
+    @company_count = Company.count
   end
 
   def logout

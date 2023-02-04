@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_02_200340) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_03_213924) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -38,6 +38,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_02_200340) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
+  end
+
+  create_table "exports", force: :cascade do |t|
+    t.integer "start_id"
+    t.integer "end_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "exports_companies", id: false, force: :cascade do |t|
+    t.integer "export_id"
+    t.integer "company_id"
+    t.index ["company_id"], name: "index_exports_companies_on_company_id"
+    t.index ["export_id"], name: "index_exports_companies_on_export_id"
   end
 
   create_table "users", force: :cascade do |t|

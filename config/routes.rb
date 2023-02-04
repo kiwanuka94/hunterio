@@ -2,11 +2,18 @@ Rails.application.routes.draw do
   get 'home/index'
   root 'pages#home'
 
+
   devise_for :users
   get 'logout', to: 'pages#logout', as: 'logout'
   get 'api/search_domain', to: 'api#search_domain'
   post 'home/create', to: 'home#create', as: 'home_create'
   post 'update_emails', to: 'home#update_emails'
+  post 'create', to: 'export#create'
+  get 'export/download', to: 'export#download', as: :export_download
+
+
+
+
 
   resources :subscribe, only: [:index]
   resources :dashboard, only: [:index]

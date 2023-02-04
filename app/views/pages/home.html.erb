@@ -20,7 +20,7 @@
   </div>
 
 
-  <div class="bg-gray-50 sm:rounded-lg mt-20">
+  <div class="bg-gray-50 sm:rounded-lg mt-10">
     <div class="px-4 py-5 sm:p-6">
       <h3 class="text-lg font-medium leading-6 text-gray-900">Run Email Finder</h3>
       <div class="mt-2 max-w-xl text-sm text-gray-500">
@@ -35,4 +35,41 @@
 </div>
 
 
+<div class="bg-white shadow sm:rounded-lg mt-5 mb-20">
+  <div class="px-4 py-5 sm:p-6">
+    <h3 class="text-lg font-medium leading-6 text-gray-900">Export Leads Tool</h3>
+    <div class="mt-2 max-w-xl text-sm text-gray-500">
+      <p>Select a starting ID value and an ending ID value to export all leads between these two ID values.</p>
+    </div>
+    <div class="mt-2 max-w-xl text-sm text-gray-500">
+      <p>Total leads in the system: <%= @company_count %></p>
+    </div>
+
+    <%= form_tag({controller: "export", action: :create}) do %>
+      <div class="mt-5 sm:items-center">
+        <div class="w-full sm:max-w-xs">
+          <label for="email" class="sr-only">Email</label>
+
+          <div class="mt-2 max-w-xl text-sm text-gray-500">
+            <p>Starting ID Value:</p>
+          </div>
+          <%= text_field_tag :start_id, nil, class: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm", placeholder: "1", required: true %>
+
+          <div class="mt-2 max-w-xl text-sm text-gray-500">
+            <p>Ending ID Value:</p>
+          </div>
+          <%= text_field_tag :end_id, nil, class: "block w-full mt-2 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm", placeholder: "20", required: true %>
+
+        </div>
+        
+        <%= submit_tag "Run", class: "mt-2 inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2", formtarget: "_blank" %>
+        <%= link_to "Export", export_download_path, class: "mt-2 inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2", formtarget: "_blank" %>
+
+      </div>
+    <% end %>
+
+
+
+
+  </div>
 </div>

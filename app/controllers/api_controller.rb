@@ -9,7 +9,7 @@ class ApiController < ApplicationController
         response = HTTParty.get("https://api.hunter.io/v2/domain-search?domain=#{domain}&api_key=#{api_key}")
     
         render json: response
-      end
+    end
     
 
     def data

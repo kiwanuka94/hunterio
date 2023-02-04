@@ -2,6 +2,9 @@ require 'csv'
 
 class HomeController < ApplicationController
 
+  
+  
+
   def create
     file = params[:file]
 
@@ -28,7 +31,6 @@ class HomeController < ApplicationController
 
   end
 
-  
 
   def update_emails
     api_key = ENV['hunter_io_api_key']
