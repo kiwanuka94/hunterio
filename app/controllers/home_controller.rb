@@ -34,7 +34,8 @@ class HomeController < ApplicationController
 
   def update_emails
     api_key = ENV['hunter_io_api_key']
-    companies = Company.where(email1: nil, email2: nil)
+    companies = Company.where(email1: [nil, ""]).where(email2: [nil, ""])
+    nodatacompanies = 0
     companies.each do |company|
       domain = company.website.gsub("https://", "").gsub("http://", "").split("/").first
       url = "https://api.hunter.io/v2/domain-search?domain=#{domain}&api_key=#{api_key}"
@@ -47,9 +48,12 @@ class HomeController < ApplicationController
         company.state = data['state']
         company.save
       else
+        nodatacompanies += 1
+        puts "Company did not return any email data. Total = #{nodatacompanies}"
         company.destroy
       end
     end
+    puts "#{nodatacompanies} companies deleted from database. They did not return email addresses from hunter."
   
     flash[:notice] = "Successfully updated emails for all companies in the database without emails"
     redirect_to root_path

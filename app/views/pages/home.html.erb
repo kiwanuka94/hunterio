@@ -43,6 +43,8 @@
     </div>
     <div class="mt-2 max-w-xl text-sm text-gray-500">
       <p>Total leads in the system: <%= @company_count %></p>
+      <p>Total leads in the system with email addresses: <%= @company_success_count %></p>
+      <p>Total leads in the system without emails: <%= @company_outstanding_count %></p>
     </div>
 
     <%= form_tag({controller: "export", action: :create}) do %>
