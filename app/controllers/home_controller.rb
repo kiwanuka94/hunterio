@@ -16,13 +16,18 @@ class HomeController < ApplicationController
     # Do your processing here
     file = params[:file]
     count = 0
+    existing_companies = 0
     CSV.foreach(file.path, headers: true) do |row|
       company_name = row[0]
       website = row[1]
-      company = Company.find_by(company_name: company_name)
+      company = Company.find_by(website: website)
       if company.nil?
         Company.create(company_name: company_name, website: website)
         count += 1
+        puts "New company added. Total new added = #{count}"
+      else
+        existing_companies =+ 1
+        puts "Company already exists in database. Total existing = #{existing_companies}"
       end
     end
 

@@ -39,7 +39,7 @@
   <div class="px-4 py-5 sm:p-6">
     <h3 class="text-lg font-medium leading-6 text-gray-900">Export Leads Tool</h3>
     <div class="mt-2 max-w-xl text-sm text-gray-500">
-      <p>Select a starting ID value and an ending ID value to export all leads between these two ID values.</p>
+      <p>Select a starting value and an ending value to export all leads between these two values in order.</p>
     </div>
     <div class="mt-2 max-w-xl text-sm text-gray-500">
       <p>Total leads in the system: <%= @company_count %></p>
@@ -53,12 +53,12 @@
           <label for="email" class="sr-only">Email</label>
 
           <div class="mt-2 max-w-xl text-sm text-gray-500">
-            <p>Starting ID Value:</p>
+            <p>Starting Value:</p>
           </div>
           <%= text_field_tag :start_id, nil, class: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm", placeholder: "1", required: true %>
 
           <div class="mt-2 max-w-xl text-sm text-gray-500">
-            <p>Ending ID Value:</p>
+            <p>Ending Value:</p>
           </div>
           <%= text_field_tag :end_id, nil, class: "block w-full mt-2 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm", placeholder: "20", required: true %>
 

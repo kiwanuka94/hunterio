@@ -19,7 +19,7 @@ class ExportController < ApplicationController
 
 
     def export_file(start_id, end_id)
-        companies = Company.where(id: start_id..end_id)
+      companies = Company.ordered_by_id.offset_limit(start_id - 1, end_id - start_id + 1)
         csv_string = CSV.generate do |csv|
           csv << ["CompanyName", "Website", "Email 1", "Email 2", "InstagramHandle", "State"]
           companies.each do |company|
